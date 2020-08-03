@@ -57,17 +57,17 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='[\[\e[0;34m\]\A\[\e[m\]][\[\e[0;32m\]\u\[\e[m\]@\[\e[0;36m\]\h\[\e[m\]][\[\e[0;35m\]\w\[\e[m\]] $ '
+    PS1='[\[[0;34m\]\A\[[m\]][\[[0;32m\]\u\[[m\]@\[[0;36m\]\h\[[m\]][\[[0;35m\]\w\[[m\]] $ '
 else
-    PS1='[\[\e[0;34m\]\A\[\e[m\]][\[\e[0;32m\]\u\[\e[m\]@\[\e[0;36m\]\h\[\e[m\]][\[\e[0;35m\]\w\[\e[m\]] $ '
+    PS1='[\[[0;34m\]\A\[[m\]][\[[0;32m\]\u\[[m\]@\[[0;36m\]\h\[[m\]][\[[0;35m\]\w\[[m\]] $ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1='[\[\e[0;34m\]\A\[\e[m\]][\[\e[0;32m\]\u\[\e[m\]@\[\e[0;36m\]\h\[\e[m\]][\[\e[0;35m\]\w\[\e[m\]] $ '
-    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1='[\[[0;34m\]\A\[[m\]][\[[0;32m\]\u\[[m\]@\[[0;36m\]\h\[[m\]][\[[0;35m\]\w\[[m\]] $ '
+    #PS1="\[]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\]$PS1"
     ;;
 *)
     ;;
@@ -120,8 +120,13 @@ fi
 
 alias calibre_update='sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
 # alias most_log="cut -d' ' -f5- /var/log/syslog | sort | uniq -c | sort -nr | head"
-TMOUT=600
+#TMOUT=600
 
 export PATH="/home/tomasz/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# include .bashrc if it exists
+#if [ -f $HOME/.gcp_env ]; then
+#    . $HOME/.gcp_env
+#fi
